@@ -1,0 +1,27 @@
+#home {
+
+  .h3 {
+    font-family: "Inter Bold" !important; 
+  }
+
+  @media only screen and (min-height: 768px) {
+    height: 100vh;
+  }
+
+  font-size: large;
+  h1 {
+    font-family: 'Roboto Slab', sans-serif;
+    font-weight: bold;
+    // letter-spacing: 0.02em;
+  }
+  a {
+    text-decoration: none;
+    color: #706e6ea1;
+    transition: 100ms all;
+  }
+
+  a:hover{
+    outline: none;
+    color:black;
+  }
+}

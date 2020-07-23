@@ -1,0 +1,15 @@
+#Filter > * {
+  font-family: "Inter",sans-serif !important;
+  zoom: 0.8;
+}
+
+#Filter {
+  transition: 100ms all;
+  .domain.dropdown-item {
+    &:hover {
+      background-color: #57a3e6;
+      color: white
+    }
+  }
+  
+}

@@ -1,0 +1,21 @@
+#signin {
+  font-size: large;
+  h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: bold;
+  }
+  small {
+    font-family: 'Inter', sans-serif;
+  }
+  input {
+  //border: none;
+  //border-radius: 0;
+  outline: none;
+  //box-shadow: none;
+//transition: all 100ms;
+    //font-family: 'Roboto', sans-serif;
+    /*&:focus {
+      border-bottom: 0.16em solid black;
+    }*/
+  }
+}
