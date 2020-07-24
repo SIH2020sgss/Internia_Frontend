@@ -8,23 +8,26 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import app from "./Firebase";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+
+// Authentication
 import Signup from "./components/signup/Signup";
 import Signin from "./components/signin/Signin";
-import Home from "./components/home/Home";
 import Forgotpass from "./components/signin/Forgotpass";
-import ReactDatePicker from "react-datepicker";
-import InternshipDetails from "./components/internshipDetails/InternshipDetails";
-import Internship from "./Internship";
+
+import Home from "./components/home/Home";
+// import ReactDatePicker from "react-datepicker";
+// import InternshipDetails from "./components/internshipDetails/InternshipDetails";
+// import Internship from "./Internship";
 import FacultyApp from "./FacultyApp";
 
-app.auth().onAuthStateChanged(u => {
+app.auth().onAuthStateChanged((u) => {
   if (u && u.emailVerified) {
     app
       .firestore()
       .collection("users")
       .doc(u.uid)
       .get()
-      .then(doc => {
+      .then((doc) => {
         let type = doc.data().type;
         if (type === "student") {
           ReactDOM.render(
@@ -34,18 +37,18 @@ app.auth().onAuthStateChanged(u => {
                   {/* <Internship /> */}
                   <Route
                     path={["/home", "/forgot-pass", "/signin", "/signup"]}
-                    render={() => <Redirect to="/search" />}
+                    render={() => <Redirect to='/search' />}
                   />
                   <Route
                     exact
-                    path="/"
-                    render={() => <Redirect to="/search" />}
+                    path='/'
+                    render={() => <Redirect to='/search' />}
                   />
                   <App />
                 </Switch>
               </BrowserRouter>
             </React.StrictMode>,
-            document.getElementById("root")
+            document.getElementById("root"),
           );
         } else if (type === "faculty") {
           ReactDOM.render(
@@ -54,10 +57,10 @@ app.auth().onAuthStateChanged(u => {
                 <FacultyApp />
               </BrowserRouter>
             </React.StrictMode>,
-            document.getElementById("root")
+            document.getElementById("root"),
           );
         } else if (type === "admin") {
-          ReactDOM.render(<p>{type}</p>, document.getElementById("root"));
+          // ReactDOM.render(<p> {type} </p>, document.getElementById("root"));
         }
       });
   } else {
@@ -65,18 +68,25 @@ app.auth().onAuthStateChanged(u => {
       <React.StrictMode>
         <BrowserRouter>
           <Switch>
-            <Route exact path="/home" component={Home} />
-            <Route path="/forgot-pass" component={Forgotpass} />
-            <Route path="/signin" component={Signin} />
-            <Route path="/signup" component={Signup} />
-            <Redirect to="/home" />
+            <Route exact path='/' component={Home} />
+            <Route exact path='/forgot-pass' component={Forgotpass} />
+            <Route exact path='/signin' component={Signin} />
+            <Route exact path='/signup' component={Signup} />
+            <Route render={() => <Redirect to='/' />} />
           </Switch>
         </BrowserRouter>
       </React.StrictMode>,
-      document.getElementById("root")
+      document.getElementById("root"),
     );
   }
 });
+
+// ReactDOM.render(
+//   <BrowserRouter>
+//     <Home />
+//   </BrowserRouter>,
+//   document.getElementById("root"),
+// );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

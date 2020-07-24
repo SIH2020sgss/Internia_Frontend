@@ -8,30 +8,27 @@ import $ from "jquery";
 import Profile from "./components/profile/Profile";
 
 class App extends Component {
-	componentDidMount() {
-		$(function() {
-			$('[data-toggle="tooltip"]').tooltip();
-		});
-	}
-	render() {
-		return (
-			<BrowserRouter>
-				<Switch>
-					<Fragment>
-						<Header />
-						<Route path="/applied" component={AppliedInternships} />
-						<Route path="/search" component={SearchInternships} />
-						<Route
-							path="/internship-details"
-							component={InternshipDetails}
-						/>
-						<Route path="/profile" component={Profile} />
-					</Fragment>
-					<Route render={() => <Redirect to="/" />} />
-				</Switch>
-			</BrowserRouter>
-		);
-	}
+  componentDidMount() {
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  }
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Fragment>
+            <Header />
+            <Route path='/applied' component={AppliedInternships} />
+            <Route path='/search' component={SearchInternships} />
+            <Route path='/internship-details' component={InternshipDetails} />
+            <Route path='/profile' component={Profile} />
+          </Fragment>
+          <Route render={() => <Redirect to='/search' />} />
+        </Switch>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
