@@ -24,7 +24,7 @@ class App extends Component {
             <Route path='/internship-details' component={InternshipDetails} />
             <Route path='/profile' component={Profile} />
           </Fragment>
-          <Route render={() => <Redirect to='/search' />} />
+          <Route render={() => <Redirect to='/' />} />
         </Switch>
       </BrowserRouter>
     );

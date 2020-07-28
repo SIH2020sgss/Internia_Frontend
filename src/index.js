@@ -8,17 +8,30 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import app from "./Firebase";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-
-// Authentication
 import Signup from "./components/signup/Signup";
 import Signin from "./components/signin/Signin";
-import Forgotpass from "./components/signin/Forgotpass";
-
 import Home from "./components/home/Home";
-// import ReactDatePicker from "react-datepicker";
-// import InternshipDetails from "./components/internshipDetails/InternshipDetails";
-// import Internship from "./Internship";
+import Forgotpass from "./components/signin/Forgotpass";
+import ReactDatePicker from "react-datepicker";
+import InternshipDetails from "./components/internshipDetails/InternshipDetails";
+import Internship from "./Internship";
 import FacultyApp from "./FacultyApp";
+
+/* 
+feedback😁
+create/edit internship😁
+requests 
+my internsihps
+profile
+
+
+
+internship list ==> all type of users
+
+*/
+
+// http://jerairrest.github.io/react-chartjs-2/
+// https://github.com/jerairrest/react-chartjs-2
 
 app.auth().onAuthStateChanged((u) => {
   if (u && u.emailVerified) {
@@ -60,7 +73,7 @@ app.auth().onAuthStateChanged((u) => {
             document.getElementById("root"),
           );
         } else if (type === "admin") {
-          // ReactDOM.render(<p> {type} </p>, document.getElementById("root"));
+          ReactDOM.render(<p>{type}</p>, document.getElementById("root"));
         }
       });
   } else {
@@ -80,13 +93,6 @@ app.auth().onAuthStateChanged((u) => {
     );
   }
 });
-
-// ReactDOM.render(
-//   <BrowserRouter>
-//     <Home />
-//   </BrowserRouter>,
-//   document.getElementById("root"),
-// );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

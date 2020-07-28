@@ -37,21 +37,24 @@ const domain = [
   "Data Science",
   "Ethical Hacking",
   "Front-End Development",
-  "Backend Development"
+  "Backend Development",
 ];
 
 export default class CreateInternship extends React.Component {
-  state = {
-    title: "",
-    description: "",
-    start_date: "",
-    duration: "",
-    apply_by: "",
-    domain: domain[0],
-    custom_domain_input: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "",
+      description: "",
+      start_date: "",
+      duration: "",
+      apply_by: "",
+      domain: domain[0],
+      custom_domain_input: "",
+    };
+  }
 
-  handleChange = e => {
+  handleChange = (e) => {
     let event = e.target;
     this.setState({ [e.target.name]: e.target.value }, () => {
       if (event.name === "domain")
@@ -62,7 +65,8 @@ export default class CreateInternship extends React.Component {
         }
     });
   };
-  handleSubmit = e => {
+
+  handleSubmit = (e) => {
     e.preventDefault();
     // if domain not in const domain --> get custom_domain_input
   };
@@ -73,89 +77,86 @@ export default class CreateInternship extends React.Component {
 
   render() {
     return (
-      <div className="CreateInternship container">
-        <form autoComplete="off" onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="title">Title</label>
+      <div className='CreateInternship container'>
+        <form autoComplete='off' onSubmit={this.handleSubmit}>
+          <div className='form-group'>
+            <label htmlFor='title'>Title</label>
             <input
-              className="form-control"
-              type="text"
-              name="title"
-              id="title"
+              className='form-control'
+              type='text'
+              name='title'
+              id='title'
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="description">Description</label>
+          <div className='form-group'>
+            <label htmlFor='description'>Description</label>
             <textarea
-              rows="6"
-              className="form-control"
-              name="description"
-              id="description"
+              rows='6'
+              className='form-control'
+              name='description'
+              id='description'
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="apply_by">Apply by</label>
+          <div className='form-group'>
+            <label htmlFor='apply_by'>Apply by</label>
             <input
-              type="date"
-              name="apply_by"
-              id="apply_by"
-              className="form-control"
+              type='date'
+              name='apply_by'
+              id='apply_by'
+              className='form-control'
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="start_date">Start date</label>
+          <div className='form-group'>
+            <label htmlFor='start_date'>Start date</label>
             <input
-              type="date"
-              name="start_date"
-              id="start_date"
-              className="form-control"
+              type='date'
+              name='start_date'
+              id='start_date'
+              className='form-control'
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="duration">Duration</label>
+          <div className='form-group'>
+            <label htmlFor='duration'>Duration</label>
             <input
-              type="number"
-              name="duration"
-              id="duration"
-              className="form-control"
+              type='number'
+              name='duration'
+              id='duration'
+              className='form-control'
               onChange={this.handleChange}
             />
           </div>
-          <div className="form-group">
-            <label htmlFor="domain">Domain</label>
+          <div className='form-group'>
+            <label htmlFor='domain'>Domain</label>
             <select
-              name="domain"
-              id="domain"
-              className="custom-select"
-              onChange={this.handleChange}
-            >
-              {domain.sort().map(d => (
+              name='domain'
+              id='domain'
+              className='custom-select'
+              onChange={this.handleChange}>
+              {domain.sort().map((d) => (
                 <option value={d} key={d}>
                   {d}
                 </option>
               ))}
-              <option value="__custom">--Custom domain--</option>
-              ))}
+              <option value='__custom'>--Custom domain--</option>
             </select>
           </div>
-          <div id="custom_domain" className="form-group">
+          <div id='custom_domain' className='form-group'>
             <input
-              type="text"
-              name="custom_domain_input"
-              id="custom_domain_input"
-              className="form-control"
+              type='text'
+              name='custom_domain_input'
+              id='custom_domain_input'
+              className='form-control'
               disabled={this.state.domain === "__custom" ? false : true}
             />
           </div>
-          <div className="form-group">
+          <div className='form-group'>
             <button
-              type="submit"
-              className="btn border-0 shadow-sm btn-primary"
-            >
+              type='submit'
+              className='btn border-0 shadow-sm btn-primary'>
               Create
             </button>
           </div>

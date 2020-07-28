@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^4.5.0",
     "bootstrap-datepicker": "1.9.0",
+    "chart.js": "^2.9.3",
     "file-loader": "6.0.0",
     "firebase": "7.15.5",
     "firebase-admin": "9.0.0",
@@ -20,8 +21,10 @@
     "react": "^16.13.1",
     "react-bootstrap": "1.0.1",
     "react-bootstrap-multiselect": "2.4.1",
+    "react-chartjs-2": "^2.9.0",
     "react-datepicker": "3.0.0",
     "react-dom": "^16.13.1",
+    "react-rating": "^2.0.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "react-typical": "0.1.3"

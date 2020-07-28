@@ -1,29 +1,33 @@
-#profile{
-  .image-container{
+#profile {
+  .image-container {
     position: relative;
-    width: 100%l
-;  }
-  .overlay{
-    
-    height:auto;
-    width:70%;
-    top:0;
-    bottom:0;
-    left:9%;
-    right:0;
-    position:absolute;
-    opacity:0;
-    transition: 500ms ease-in-out;
-    background-color:rgb(173, 166, 166);
- }
- .image-container:hover .overlay{
-   opacity: 0.5;
-  cursor: pointer;
- }
- #icon{
-   position:absolute;
-   top:40%;
-   left:40%;
-   
- }
+    width: 100%;
+    cursor: pointer;
+  }
+  // .overlay {
+  //   width: 20vh;
+  //   position: absolute;
+  //   opacity: 0;
+  //   transition: 500ms ease-in-out;
+  //   background-color: rgb(173, 166, 166);
+  // }
+  // .image-container:hover .overlay {
+  //   opacity: 0.5;
+  //   cursor: pointer;
+  // }
+  // #icon {
+  //   position: absolute;
+  //   top: 40%;
+  //   left: 40%;
+  // }
+  .resume-section {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  .info {
+    font-weight: bold;
+    font-size: larger;
+  }
 }
