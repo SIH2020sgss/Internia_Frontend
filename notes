@@ -1,0 +1,64 @@
+folder naming: 		lower-case (hyphen separated)
+file naming: 		PascalCase
+general JS files: 	camelCase
+
+preferences ==> localStorage
+
+public 
+src:
+	components
+		authentication
+			signin
+			signup
+			forgot-password
+
+		shared
+			welcome
+            404
+			change-password
+			password-reset
+			browse-internship
+			
+        student
+			header
+            profile
+			notifications
+			internship
+				applied
+				details
+			IC-02 (optional)
+			
+        faculty
+			header
+            profile
+			notifications
+            internship
+				create (edit)
+				floated
+				details
+			feedback
+
+        admin
+			header
+			profile
+			notifications
+
+			feedback
+				list
+				details
+
+			student
+				list
+				details
+
+			faculty
+				list
+				details
+
+			internship
+				create
+				list
+				details
+
+			stats
+            
