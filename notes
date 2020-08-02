@@ -4,16 +4,17 @@ general JS files: 	camelCase
 
 preferences ==> localStorage
 
+Project structure
 public 
 src:
 	components
 		authentication
+			welcome
 			signin
 			signup
 			forgot-password
 
 		shared
-			welcome
             404
 			change-password
 			password-reset
@@ -26,14 +27,13 @@ src:
 			internship
 				applied
 				details
-			IC-02 (optional)
 			
         faculty
 			header
             profile
 			notifications
             internship
-				create (edit)
+				create
 				floated
 				details
 			feedback
@@ -62,3 +62,8 @@ src:
 
 			stats
             
+
+Routing :
+
+	Routing based on authentication status ( unauthenticated ) and user type is done in index.JS
+	Routing for individual user is done in routes/Usertype , where usertype is the type of user

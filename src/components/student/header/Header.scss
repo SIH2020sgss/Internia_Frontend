@@ -1,0 +1,29 @@
+#header {
+  .dropdown-menu {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-0.4em);
+    transition: 300ms ease all;
+    background: white;
+
+    a:hover,
+    a:focus,
+    button:hover,
+    button:focus,
+    button:active {
+      color: white;
+      background-color: #d3e3fc;
+      border: none;
+      outline: none;
+    }
+
+    &.show {
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+      transition: 300ms ease all;
+    }
+  }
+}

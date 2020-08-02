@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  // font-family: "Hind Guntur", sans-serif;
+  // font-family: "Hind Guntur";
+  font-family: sans-serif;
+}
+
+.noselect {
+  user-select: none;
+}

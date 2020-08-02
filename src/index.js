@@ -3,42 +3,24 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 import "font-awesome/css/font-awesome.min.css";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
-import app from "./Firebase";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import Signup from "./components/signup/Signup";
-import Signin from "./components/signin/Signin";
-import Home from "./components/home/Home";
-import Forgotpass from "./components/signin/Forgotpass";
-import ReactDatePicker from "react-datepicker";
-import InternshipDetails from "./components/internshipDetails/InternshipDetails";
-import Internship from "./Internship";
-import FacultyApp from "./FacultyApp";
+import "./fonts/HindGuntur.css";
+import "./index.scss";
+import Authentication from "./routes/Authentication";
+import Students from "./routes/Students";
+import Faculty from "./routes/Faculty";
+import Admin from "./routes/Admin";
 
-/* 
-feedback😁
-create/edit internship😁
-requests 
-my internsihps
-profile
+import app from "./firebase";
+import {
+  BrowserRouter /* , Switch, Redirect, Route */,
+} from "react-router-dom";
 
-
-
-internship list ==> all type of users
-
-*/
-
-// http://jerairrest.github.io/react-chartjs-2/
-// https://github.com/jerairrest/react-chartjs-2
-
-app.auth().onAuthStateChanged((u) => {
-  if (u && u.emailVerified) {
+app.auth().onAuthStateChanged((firebase_user) => {
+  if (firebase_user && firebase_user.emailVerified) {
     app
       .firestore()
       .collection("users")
-      .doc(u.uid)
+      .doc(firebase_user.uid)
       .get()
       .then((doc) => {
         let type = doc.data().type;
@@ -46,19 +28,7 @@ app.auth().onAuthStateChanged((u) => {
           ReactDOM.render(
             <React.StrictMode>
               <BrowserRouter>
-                <Switch>
-                  {/* <Internship /> */}
-                  <Route
-                    path={["/home", "/forgot-pass", "/signin", "/signup"]}
-                    render={() => <Redirect to='/search' />}
-                  />
-                  <Route
-                    exact
-                    path='/'
-                    render={() => <Redirect to='/search' />}
-                  />
-                  <App />
-                </Switch>
+                <Students />
               </BrowserRouter>
             </React.StrictMode>,
             document.getElementById("root"),
@@ -67,34 +37,28 @@ app.auth().onAuthStateChanged((u) => {
           ReactDOM.render(
             <React.StrictMode>
               <BrowserRouter>
-                <FacultyApp />
+                <Faculty />
               </BrowserRouter>
             </React.StrictMode>,
             document.getElementById("root"),
           );
         } else if (type === "admin") {
-          ReactDOM.render(<p>{type}</p>, document.getElementById("root"));
+          ReactDOM.render(
+            <React.StrictMode>
+              <BrowserRouter>
+                <Admin />
+              </BrowserRouter>
+            </React.StrictMode>,
+            document.getElementById("root"),
+          );
         }
       });
   } else {
     ReactDOM.render(
-      <React.StrictMode>
-        <BrowserRouter>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route exact path='/forgot-pass' component={Forgotpass} />
-            <Route exact path='/signin' component={Signin} />
-            <Route exact path='/signup' component={Signup} />
-            <Route render={() => <Redirect to='/' />} />
-          </Switch>
-        </BrowserRouter>
-      </React.StrictMode>,
+      <BrowserRouter>
+        <Authentication />
+      </BrowserRouter>,
       document.getElementById("root"),
     );
   }
 });
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
